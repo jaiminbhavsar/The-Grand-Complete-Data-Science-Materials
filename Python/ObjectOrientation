@@ -46,3 +46,75 @@ class Cat(Animal):
 
 cat = Cat()
 cat.speak()
+
+
+##### Encapsulation ########
+
+
+class Person:
+    def __init__(self,name,age):
+        self.name = name   # Public variable 
+        self.age = age      # Public variable
+
+per = Person("Jaimin","32")
+print(per.name)
+print(dir(per))
+
+
+O/p: Jaimin
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__',
+'__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__',
+'__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__',
+'__str__', '__subclasshook__', '__weakref__', 'age', 'name']
+
+
+class Person:
+    def __init__(self,name,age):
+        self.__name = name   # Private variable 
+        self.__age = age      # Private variable
+
+per = Person("Jaimin","32")
+print(dir(per))
+print(per.name)
+
+O/p:
+
+['_Person__age', '_Person__name', '__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__',
+'__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__',
+'__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__']
+ERROR!
+Traceback (most recent call last):
+  File "<main.py>", line 10, in <module>
+AttributeError: 'Person' object has no attribute 'name'
+
+
+
+class Person:
+    def __init__(self,name,age):
+        self._name = name   # Protected variable 
+        self._age = age      # Protected variable
+
+class Employee(Person):
+    def __init__(self,name,age):
+        super().__init__(name,age)
+
+per = Employee("Jaimin","32")
+
+def getName(person):
+    print(person._name)
+
+print(dir(per))
+getName(per)
+
+O/P:
+
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__'
+, '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__'
+, '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_age', '_name']
+Jaimin
+
+
+
+
+
+
