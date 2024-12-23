@@ -1,3 +1,33 @@
+### Polymorphism using method overriding ###
+
+class Animal:
+    def speak(self):
+        print("Sound of Animal")
+
+class Dog(Animal):
+    def speak(self):
+        print("wooeooowoooow")
+
+class Cat(Animal):
+    def speak(self):
+        print("Meooooowowwwoo")
+
+def animalSpeak(Animal):
+    Animal.speak()
+
+dog  = Dog()
+dog.speak()
+cat = Cat()
+cat.speak()
+
+animalSpeak(dog)
+
+
+
+
+
+### Polymorphism using Abstract method ###
+
 from abc import ABC,abstractmethod
 
 class Animal(ABC):
