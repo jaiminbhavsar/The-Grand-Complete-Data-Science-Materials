@@ -115,6 +115,25 @@ Jaimin
 
 
 
+####### Getter and Setter method to access the private variable using public method ######
+This is the defined way using which private variable should be accessed
+
+class Person:
+    def __init__(self,name,age):
+        self.__name = name   # Private variable 
+        self.__age = age      # Private variable
+    
+    def getName(self):
+        return self.__name
+    
+    def setName(self,name):
+        self.__name = name 
+
+per = Person("Jaimin","32")
+print(per.getName())
+per.setName("Jatin")
+print(per.getName())
+
 
 
 
