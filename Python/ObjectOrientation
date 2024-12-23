@@ -183,6 +183,22 @@ n2 = Number(4,5)
 print(n1 + n2)
 print(n1 - n2)
 print(n1 == n2)
+
+
+##### Decorator ###### 
+
+def mydecorator(func):
+    def mywrapper(a,b):
+        if a < b:
+            a,b = b,a
+        return func(a,b)
+    return mywrapper    
+
+@mydecorator
+def div(a,b):
+    return a/b
+
+print(div(2,8))
     
 
 
