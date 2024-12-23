@@ -23,9 +23,6 @@ cat.speak()
 animalSpeak(dog)
 
 
-
-
-
 ### Polymorphism using Abstract method ###
 
 from abc import ABC,abstractmethod
@@ -135,5 +132,57 @@ per.setName("Jatin")
 print(per.getName())
 
 
+
+### Magic method #####
+class Person:
+    def __init__(self,name,age):
+        self.name = name   
+        self.age = age      
+per = Person("Jaimin",32)
+print(per)
+
+O/p: <__main__.Person object at 0x782aa9935460>
+
+
+class Person:
+    def __init__(self,name,age):
+        self.name = name   
+        self.age = age      
+    
+    def __str__(self):
+        return f"{self.name} and {self.age}"
+
+per = Person("Jaimin",32)
+print(per)
+
+O/p:  Jaimin and 32
+
+
+#  Operator Overloading using magic methods
+class Number:
+    def __init__(self,x,y):
+        self.x  = x
+        self.y = y
+    
+    def __add__(self,other):
+        return self.x + other.x, self.y + other.y
+    
+    def __sub__(self,other):
+        return self.x - other.x, self.y - other.y
+    
+    def __eq__(self, other):
+        return self.x == other.x, self.y == other.y
+    def __repr__(self):
+        return f"({self.x}, {self.y})"
+        
+    
+    
+n1 = Number(4,3)
+n2 = Number(4,5)
+
+print(n1 + n2)
+print(n1 - n2)
+print(n1 == n2)
+    
 
 
