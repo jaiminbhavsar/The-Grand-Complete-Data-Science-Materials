@@ -27,8 +27,59 @@ def count_ones(arr):
     print(count)
 
 
+import itertools
+
+S = "ABC"
+permutations = list(itertools.permutations(S))
+result = [''.join(p) for p in permutations]
+print(result)
+
+['ABC', 'ACB', 'BAC', 'BCA', 'CBA', 'CAB']
 
 
+
+# Define the decorator
+def handle_zero_division(func):
+    def wrapper(a, b):
+        if b == 0:
+            print("Zero division error: Cannot divide by zero.")
+        else:
+            return func(a, b)
+    return wrapper
+
+# Define the division function and apply the decorator
+@handle_zero_division
+def div(a, b):
+    return a / b
+
+class Student:
+    def __init__(self, name, age, standard, grade):
+        self.name = name
+        self.age = age
+        self.standard = standard
+        self.grade = grade
+
+    def __repr__(self):
+        return f"Student(name={self.name}, age={self.age}, standard={self.standard}, grade={self.grade})"
+
+
+
+
+# Creating four student objects
+student1 = Student("Alice", 15, "10th", "A")
+student2 = Student("Bob", 14, "9th", "B")
+student3 = Student("Charlie", 16, "11th", "A+")
+student4 = Student("David", 17, "12th", "B+")
+
+# Storing the student objects in a list
+students = [student1, student2, student3, student4]
+
+# Sorting the list by student name
+students_sorted = sorted(students, key=lambda student: student.name)
+
+# Printing the sorted list
+for student in students_sorted:
+    print(student)
 
 
 
