@@ -1,3 +1,31 @@
+### Multiple Inheritance
+
+class Animal:
+    def __init__(self, name):
+        self.name = name
+    def speak(self):
+        print(f"{self.name} speak")
+
+class Pet:
+    def __init__(self, owner):
+        self.owner = owner
+    def speak(self):
+        print(f"{self.owner} speaks")
+
+
+class Dog:
+    def __init__(self, name, owner):
+        Animal.__init__(self, name)  ## Here we have not used super.__init__() -- as in multiple inheritance, 2 super classes are there
+        Pet.__init__(self, owner)
+    def speak(self):
+        print(f"{self.owner} louding")
+
+dog = Dog("cow", "Jaimin")
+dog.speak()
+
+
+
+
 ### Polymorphism using method overriding ###
 
 class Animal:
@@ -95,7 +123,7 @@ class Employee(Person):
     def __init__(self,name,age):
         super().__init__(name,age)
 
-per = Employee("Jaimin","32")
+per = Employee("Jaimin", "32")
 
 def getName(person):
     print(person._name)
@@ -172,6 +200,7 @@ class Number:
     
     def __eq__(self, other):
         return self.x == other.x, self.y == other.y
+
     def __repr__(self):
         return f"({self.x}, {self.y})"
         
