@@ -1,3 +1,36 @@
+# Generator
+
+def square(num):
+    i = 0
+    while i < num:
+        return i
+    i+=1
+
+square(3)
+
+o/p = 0
+
+def square(num):
+    i = 0
+    while i < num:
+        yield i
+    i+=1
+
+square(3)
+
+o/p = square generate object
+
+def square(num):
+    i = 0
+    while i < num:
+        yield i
+    i+=1
+
+for i in square(3)
+    print(i)
+o/p = o, 1, 2 -- Use of generator is to save memory as it is calling one by one record and process it, not store every record in memory, useful for large records(List)
+
+
 ### Multiple Inheritance
 
 class Animal:
