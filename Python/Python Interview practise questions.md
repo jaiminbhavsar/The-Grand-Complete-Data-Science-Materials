@@ -294,6 +294,31 @@ class Singleton:
         if cls._instance is None:
             cls._instance = super().__new__(cls)
         return cls._instance
+import pytest
+
+# (Assume your class 'abc' is imported or defined here)
+
+def test_singleton_memory_identity():
+    """Verify that multiple instantiations return the exact same object."""
+    instance_1 = abc()
+    instance_2 = abc()
+    instance_3 = abc()
+    
+    # 'is' checks memory address identity
+    assert instance_1 is instance_2
+    assert instance_2 is instance_3
+
+def test_singleton_state_sharing():
+    """Verify that state changes in one reference reflect in all references."""
+    instance_1 = abc()
+    instance_2 = abc()
+    
+    # Set an attribute on the first instance
+    instance_1.database_connection = "Connected!"
+    
+    # Read the attribute from the second instance
+    assert hasattr(instance_2, 'database_connection')
+    assert instance_2.database_connection == "Connected!"
 
 ```
 **22. Question:**
