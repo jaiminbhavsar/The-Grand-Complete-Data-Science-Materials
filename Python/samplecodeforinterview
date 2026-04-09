@@ -1,3 +1,39 @@
+def validate(str1):
+    stack = []
+    
+    for i in str1:
+        if (i == "{" or i == "(" or i == "["):
+            stack.append(i)
+        else:
+            if len(stack) == 0: # if you find "]})" but in stack there is no element to compare or stack empty - return false
+                return False
+                
+            ch = stack.pop()
+            
+            if ((i == "}" and ch == "{" ) or (ch == "[" and i == "]") or (ch == "(" and i == ")")):
+               continue 
+            else:
+               return False ### -- if bracket does not match -- {] 
+
+               
+    return len(stack) == 0 ## After str1 end -- still stack is not empty - return false
+    
+print(validate("{{[()]}}"))
+
+-- 3 rule:
+-- After str1 end -- still stack is not empty - return false
+-- if you find "]})" but in stack there is no element to compare or stack empty - return false
+-- if bracket does not match -- {] 
+
+
+
+
+
+
+
+
+
+
 # Create a function that counts the number of blocks of two or more adjacent 1s in a list.
 #
 # count_ones([1, 0, 0, 1, 1, 0, 1, 1, 1]) ➞ 2
